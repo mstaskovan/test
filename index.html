@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A320 SOP Checklist</title>
+    <style>
+        body { background-color: black; color: white; font-family: Arial, sans-serif; margin-bottom: 50vh; }
+        .group-title { color: red; border-bottom: 2px solid red; margin-top: 30px; }
+        
+        /* Štýl pre podskupinu - funguje ako tlačidlo */
+        .sub-group { 
+            color: #87CEEB; /* Svetlomodrá pre podskupiny */
+            cursor: pointer; 
+            margin: 15px 0 5px 10px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        ul { list-style: none; padding-left: 0; }
+        .item { color: white; cursor: pointer; padding: 4px 10px; transition: 0.2s; }
+        .indented { margin-left: 25px; }
+        .special { font-weight: bold; color: #FFD700; }
+        
+        /* Stav označené */
+        .selected { color: #555 !important; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+
+<h3 class="group-title">Preliminary Cockpit Preparation</h3>
+
+<div class="sub-group" onclick="toggleSubGroup(this)">Krok 1: Základná bezpečnosť</div>
+<ul>
+    <li class="item indented special">Páky ovládania motorov – IDLE.</li>
+    <li class="item indented special">Hlavne spínače motorov – OFF</li>
+    <li class="item indented special">Voliče režimu motora – NORM.</li>
+    <li class="item indented special">Páka podvozku – POLOHA DOLE.</li>
+</ul>
+
+<div class="sub-group" onclick="toggleSubGroup(this)">Krok 2: Napájanie</div>
+<ul>
+    <li class="item indented special">Napätie batérie – SKONTROLOVAŤ (>25,5 V).</li>
+    <li class="item indented special">Externé napájanie – ZAPNÚŤ.</li>
+    <li class="item indented">Počkať na dokončenie autotestov.</li>
+</ul>
+
+<script>
+const items = Array.from(document.querySelectorAll('.item'));
+let selectedIndex = -1;
+
+// 1. Logika klikania po jednom (ako predtým)
+document.body.addEventListener('click', (event) => {
+    // Ignorujeme kliknutie, ak sme klikli na názov podskupiny
+    if (event.target.classList.contains('sub-group')) return;
+
+    if (event.button === 0) {
+        if (selectedIndex < items.length - 1) {
+            selectedIndex++;
+            items[selectedIndex].classList.add('selected');
+            items[selectedIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+});
+
+// 2. Logika odznačovania (Pravé tlačidlo / Dlhé podržanie)
+document.body.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    if (selectedIndex >= 0) {
+        items[selectedIndex].classList.remove('selected');
+        selectedIndex--;
+        if (selectedIndex >= 0) {
+            items[selectedIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+});
+
+// 3. NOVÁ LOGIKA: Označenie celej podskupiny
+function toggleSubGroup(element) {
+    // Nájdeme nasledujúci zoznam (UL) pod nadpisom
+    const nextUl = element.nextElementSibling;
+    if (nextUl && nextUl.tagName === 'UL') {
+        const subItems = nextUl.querySelectorAll('.item');
+        
+        // Zistíme, či je prvý v skupine už označený
+        const isFirstSelected = subItems[0].classList.contains('selected');
+
+        subItems.forEach(item => {
+            if (!isFirstSelected) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
+        });
+
+        // Aktualizujeme globálny index na posledný označený prvok v celom dokumente
+        updateGlobalIndex();
+    }
+}
+
+function updateGlobalIndex() {
+    // Nájdeme index posledného elementu, ktorý má triedu 'selected'
+    let lastIndex = -1;
+    items.forEach((item, index) => {
+        if (item.classList.contains('selected')) {
+            lastIndex = index;
+        }
+    });
+    selectedIndex = lastIndex;
+}
+</script>
+</body>
+</html>
