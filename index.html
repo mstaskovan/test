@@ -51,54 +51,103 @@
         #lightbox.active { display: flex; }
     </style>
 </head>
-<body>
-
-<div id="lightbox" onclick="this.classList.remove('active')">
-    <img id="lightbox-img" src="" alt="Checklist Diagram">
-</div>
-
 <h3 class="group-title">Preliminary Cockpit Preparation</h3>
 
 <div class="sub-group" onclick="toggleSubGroup(this)">
-    SAFETY & POWER INIZIALIZATION 
+    SAFETY EXTERIOR & INTERIOR CHECK
     <i class="fa-regular fa-image img-trigger" onclick="openLightbox('001.png', event)"></i>
 </div>
 <ul>
     <li class="item">
         <div>
-            <span class="item-text">Eng Master 1 & 2</span>
-            <span class="description">Uistite sa, že sú vypnuté pred zapnutím elektriky.</span>
+            <span class="item-text">Required Documents</span>
+            <span class="description">Skontrolovať palubnú dokumentáciu a licencie.</span>
         </div>
+        <span class="dots"></span>
+        <span class="status">ON BOARD</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Engine Masters 1 & 2</span>
         <span class="dots"></span>
         <span class="status">OFF</span>
     </li>
     <li class="item">
-        <span class="item-text">Gear Lever</span>
+        <span class="item-text">Engine Mode Selector</span>
+        <span class="dots"></span>
+        <span class="status">NORM</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Landing Gear Lever</span>
         <span class="dots"></span>
         <span class="status">DOWN</span>
     </li>
     <li class="item">
         <div>
-            <span class="item-text">Battery Voltage</span>
-            <span class="description">Check above 25.5V for APU start.</span>
+            <span class="item-text">Wipers</span>
+            <span class="description">Páčky stieračov v polohe OFF.</span>
         </div>
         <span class="dots"></span>
-        <span class="status">CHECK</span>
+        <span class="status">OFF</span>
     </li>
 </ul>
 
-<h3 class="group-title">After Start</h3>
-<div class="sub-group" onclick="toggleSubGroup(this)">ECAM & TRIM SETTINGS</div>
+<div class="sub-group" onclick="toggleSubGroup(this)">
+    ELECTRICAL POWER INITIALIZATION
+    <i class="fa-regular fa-image img-trigger" onclick="openLightbox('002.png', event)"></i>
+</div>
 <ul>
     <li class="item">
-        <span class="item-text">Anti Ice</span>
+        <div>
+            <span class="item-text">Batteries 1 & 2</span>
+            <span class="description">Skontrolovať napätie (>25.5V), potom zapnúť (Check OFF then ON).</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">CHECK / ON</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">External Power</span>
+            <span class="description">Ak svieti zelené "AVAIL", zapnúť na "ON".</span>
+        </div>
         <span class="dots"></span>
         <span class="status">AS RQRD</span>
     </li>
     <li class="item">
-        <span class="item-text">Pitch Trim</span>
+        <div>
+            <span class="item-text">APU Fire Test</span>
+            <span class="description">Povinný test pred spustením APU na batériách.</span>
+        </div>
         <span class="dots"></span>
-        <span class="status">SET %</span>
+        <span class="status">PERFORM</span>
+    </li>
+</ul>
+
+<div class="sub-group" onclick="toggleSubGroup(this)">
+    SYSTEMS SCAN (OVERHEAD PANEL)
+</div>
+<ul>
+    <li class="item">
+        <span class="item-text">Ext Lights (Strobe)</span>
+        <span class="dots"></span>
+        <span class="status">AUTO</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Emer Exit Signs</span>
+        <span class="dots"></span>
+        <span class="status">ARM</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Crew Supply Oxygen</span>
+        <span class="dots"></span>
+        <span class="status">ON</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">ADIRS (1, 2, 3)</span>
+            <span class="description">Prepnúť všetky tri voliče do polohy NAV.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">NAV</span>
     </li>
 </ul>
 
