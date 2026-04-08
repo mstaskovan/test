@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A320 NEW</title>
+    <title>A320 Professional SOP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: black; color: white; font-family: 'Segoe UI', Arial, sans-serif; padding-bottom: 50vh; margin: 0; }
         
-        /* Nadpisy skupín */
         .group-title { color: #ff3b3b; border-bottom: 2px solid #ff3b3b; padding: 10px; text-transform: uppercase; margin-top: 30px; }
         
-        /* Podskupiny */
         .sub-group { 
             color: #5dade2; cursor: pointer; padding: 10px; font-weight: bold; 
             background: #1a1a1a; margin: 5px 0; border-radius: 4px;
@@ -19,56 +17,40 @@
 
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* Položka checklistu - Logika Airbus FCOM */
         .item { 
             display: flex; align-items: baseline; justify-content: space-between;
             padding: 8px 15px; cursor: pointer; transition: 0.2s; border-bottom: 1px solid #222;
         }
+
+        /* Odsadenie pre podkroky APU */
+        .indented-item { padding-left: 40px; border-bottom: 1px solid #1a1a1a; background-color: #050505; }
         
         .item-text { text-transform: uppercase; font-weight: bold; flex-shrink: 0; }
         .dots { flex-grow: 1; border-bottom: 2px dotted #444; margin: 0 10px; position: relative; top: -4px; }
         .status { text-transform: uppercase; font-weight: bold; color: #FFD700; flex-shrink: 0; }
 
-        /* Rozširujúci popis pod položkou */
         .description { 
             display: block; font-size: 0.85em; color: #bbb; text-transform: none; font-weight: normal;
             margin-top: 4px; font-style: italic;
         }
 
-        /* Ikonka obrázka */
         .img-trigger { color: #5dade2; margin-left: 10px; cursor: pointer; font-size: 1.2em; }
 
-        /* Stav označené */
         .selected .item-text, .selected .status { color: #555 !important; }
         .selected .dots { border-bottom-color: #222; }
 
-       /* LIGHTBOX CSS - Stredový a priehľadný */
-#lightbox {
-    display: none; 
-    position: fixed; 
-    z-index: 999; 
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%;
-    /* Priehľadnosť pozadia 0.6 (vidíš text za ním) */
-    background-color: rgba(0,0,0,0.6); 
-    justify-content: center; 
-    align-items: center;
-    /* Dôležité: povolí scroll pod lightboxom na mobile */
-    pointer-events: auto; 
-}
+        #lightbox {
+            display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+            pointer-events: auto; 
+        }
 
-#lightbox img { 
-    max-width: 90%; 
-    max-height: 80%; 
-    border: 2px solid #5dade2; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    /* Samotný obrázok mierne priesvitný, aby nebol "ako stena" */
-    opacity: 0.95; 
-}
+        #lightbox img { 
+            max-width: 90%; max-height: 80%; border: 2px solid #5dade2; 
+            box-shadow: 0 0 50px rgba(0,0,0,0.8); opacity: 0.95; 
+        }
 
-#lightbox.active { display: flex; }
+        #lightbox.active { display: flex; }
     </style>
 </head>
 <body>
@@ -80,7 +62,7 @@
 <h3 class="group-title">Preliminary Cockpit Preparation</h3>
 
 <div class="sub-group" onclick="toggleSubGroup(this)">
-    SAFETY EXTERIOR & INTERIOR CHECK
+    PRELIMINARY AIRCRAFT SETUP
     <i class="fa-regular fa-image img-trigger" onclick="openLightbox('001.png', event)"></i>
 </div>
 <ul>
@@ -107,7 +89,7 @@
     <li class="item">
         <div>
             <span class="item-text">5. BOTH WIPER selectors</span>
-            <span class="description">Uisti sa, že sú oba stierače vypnuté (v polohe OFF).</span>
+            <span class="description">Uisti sa, že sú oba stierače vypnuté (OFF).</span>
         </div>
         <span class="dots"></span>
         <span class="status">OFF</span>
@@ -122,7 +104,7 @@
     <li class="item">
         <div>
             <span class="item-text">1. BAT 1 & 2</span>
-            <span class="description">Check voltage (>25.5V). Ak je menej, nabiť pomocou Ext Pwr. Potom nastaviť na AUTO.</span>
+            <span class="description">Check voltage (>25.5V). Potom nastaviť na AUTO.</span>
         </div>
         <span class="dots"></span>
         <span class="status">Check/AUTO</span>
@@ -130,62 +112,61 @@
     <li class="item">
         <div>
             <span class="item-text">2. EXT POWER</span>
-            <span class="description">Ak svieti zelené AVAIL, stlačiť na ON. Skontrolovať nabehnutie displejov.</span>
+            <span class="description">ON (AVAIL svetlo zelené). Počkať na autotesty (beep beep beep).</span>
         </div>
         <span class="dots"></span>
         <span class="status">ON</span>
     </li>
+    
     <li class="item">
-        <div>
-            <span class="item-text">3. APU FIRE TEST</span>
-            <span class="description">Povinný test pred spustením: Overiť zvukový signál a svetlá na Overhead/Engine paneli.</span>
-        </div>
+        <span class="item-text">3. APU</span>
+        <span class="dots"></span>
+        <span class="status">SET & START</span>
+    </li>
+    <li class="item indented-item">
+        <span class="item-text">APU FIRE TEST</span>
         <span class="dots"></span>
         <span class="status">PERFORM</span>
     </li>
+    <li class="item indented-item">
+        <div>
+            <span class="item-text">APU MASTER pb sw</span>
+            <span class="description">Wait 3s before selecting START.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">ON</span>
+    </li>
+    <li class="item indented-item">
+        <span class="item-text">APU START</span>
+        <span class="dots"></span>
+        <span class="status">ON</span>
+    </li>
+    <li class="item indented-item">
+        <span class="item-text">EXT PWR (After APU Start)</span>
+        <span class="dots"></span>
+        <span class="status">AS RQRD</span>
+    </li>
+
     <li class="item">
         <div>
             <span class="item-text">4. ALL IR MODE selectors</span>
-            <span class="description">Prepnúť všetky 3 ADIRS voliče do polohy NAV a skontrolovať ON BAT svetlá.</span>
+            <span class="description">Prepnúť všetky 3 ADIRS do NAV. Overiť ON BAT svetlá.</span>
         </div>
         <span class="dots"></span>
         <span class="status">NAV</span>
     </li>
-
-    <li class="item">
-        <div>
-            <span class="item-text">APU MASTER pb sw</span>
-            <span class="description">ON (Počkať aspoň 3 sekundy pred stlačením START).</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">ON</span>
-    </li>
-    <li class="item">
-        <div>
-            <span class="item-text">APU START</span>
-            <span class="description">Štart APU odložiť na čas krátko pred odletom, ak nie je potrebná klimatizácia.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">ON</span>
-    </li>
-    <li class="item">
-        <div>
-            <span class="item-text">EXT PWR pb sw</span>
-            <span class="description">Ponechať zapnuté (ak je dostupné) pre zníženie záťaže APU, najmä v teple.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">AS RQRD</span>
-    </li>
 </ul>
-    
+
 <script>
-// Pôvodná logika výberu
-const items = Array.from(document.querySelectorAll('.item'));
+let items = [];
 let selectedIndex = -1;
+
+function updateItemsList() {
+    items = Array.from(document.querySelectorAll('.item'));
+}
 
 document.body.addEventListener('click', (event) => {
     if (event.target.closest('.sub-group') || event.target.closest('.img-trigger')) return;
-
     if (event.button === 0) {
         if (selectedIndex < items.length - 1) {
             selectedIndex++;
@@ -206,7 +187,6 @@ document.body.addEventListener('contextmenu', (event) => {
     }
 });
 
-// Hromadné označenie podskupiny
 function toggleSubGroup(element) {
     const nextUl = element.nextElementSibling;
     if (nextUl && nextUl.tagName === 'UL') {
@@ -223,14 +203,16 @@ function updateGlobalIndex() {
     selectedIndex = lastIndex;
 }
 
-// Lightbox Funkcia
 function openLightbox(imgName, event) {
-    event.stopPropagation(); // Zabráni označeniu checklistu pri kliku na fotku
+    if (event) event.stopPropagation();
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
-    lbImg.src = 'img/' + imgName; // Cesta k tvojim obrázkom
+    lbImg.src = 'img/' + imgName;
     lb.classList.add('active');
 }
+
+// Inicializácia zoznamu pri načítaní
+window.onload = updateItemsList;
 </script>
 
 </body>
