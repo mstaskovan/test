@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A320 Professional Checklist</title>
+    <title>A320 NEW</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: black; color: white; font-family: 'Segoe UI', Arial, sans-serif; padding-bottom: 50vh; margin: 0; }
@@ -51,6 +51,12 @@
         #lightbox.active { display: flex; }
     </style>
 </head>
+<body>
+
+<div id="lightbox" onclick="this.classList.remove('active')">
+    <img id="lightbox-img" src="" alt="Checklist Diagram">
+</div>
+
 <h3 class="group-title">Preliminary Cockpit Preparation</h3>
 
 <div class="sub-group" onclick="toggleSubGroup(this)">
@@ -59,32 +65,29 @@
 </div>
 <ul>
     <li class="item">
-        <div>
-            <span class="item-text">Required Documents</span>
-            <span class="description">Skontrolovať palubnú dokumentáciu a licencie.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">ON BOARD</span>
-    </li>
-    <li class="item">
-        <span class="item-text">Engine Masters 1 & 2</span>
+        <span class="item-text">1. ENG MASTER 1 & 2</span>
         <span class="dots"></span>
         <span class="status">OFF</span>
     </li>
     <li class="item">
-        <span class="item-text">Engine Mode Selector</span>
+        <span class="item-text">2. ENG MODE selector</span>
         <span class="dots"></span>
         <span class="status">NORM</span>
     </li>
     <li class="item">
-        <span class="item-text">Landing Gear Lever</span>
+        <span class="item-text">3. LANDING GEAR lever</span>
         <span class="dots"></span>
         <span class="status">DOWN</span>
     </li>
     <li class="item">
+        <span class="item-text">4. ACCU PRESS / BRAKES indicator</span>
+        <span class="dots"></span>
+        <span class="status">CHECK</span>
+    </li>
+    <li class="item">
         <div>
-            <span class="item-text">Wipers</span>
-            <span class="description">Páčky stieračov v polohe OFF.</span>
+            <span class="item-text">5. BOTH WIPER selectors</span>
+            <span class="description">Uisti sa, že sú oba stierače vypnuté (v polohe OFF).</span>
         </div>
         <span class="dots"></span>
         <span class="status">OFF</span>
@@ -98,56 +101,19 @@
 <ul>
     <li class="item">
         <div>
-            <span class="item-text">Batteries 1 & 2</span>
-            <span class="description">Skontrolovať napätie (>25.5V), potom zapnúť (Check OFF then ON).</span>
+            <span class="item-text">6. BAT 1 & 2</span>
+            <span class="description">Check voltage (>25.5V), then set to ON.</span>
         </div>
         <span class="dots"></span>
         <span class="status">CHECK / ON</span>
     </li>
     <li class="item">
         <div>
-            <span class="item-text">External Power</span>
-            <span class="description">Ak svieti zelené "AVAIL", zapnúť na "ON".</span>
+            <span class="item-text">7. EXT PWR</span>
+            <span class="description">Ak svieti zelené AVAIL, stlač na ON (zmení sa na modré ON).</span>
         </div>
         <span class="dots"></span>
         <span class="status">AS RQRD</span>
-    </li>
-    <li class="item">
-        <div>
-            <span class="item-text">APU Fire Test</span>
-            <span class="description">Povinný test pred spustením APU na batériách.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">PERFORM</span>
-    </li>
-</ul>
-
-<div class="sub-group" onclick="toggleSubGroup(this)">
-    SYSTEMS SCAN (OVERHEAD PANEL)
-</div>
-<ul>
-    <li class="item">
-        <span class="item-text">Ext Lights (Strobe)</span>
-        <span class="dots"></span>
-        <span class="status">AUTO</span>
-    </li>
-    <li class="item">
-        <span class="item-text">Emer Exit Signs</span>
-        <span class="dots"></span>
-        <span class="status">ARM</span>
-    </li>
-    <li class="item">
-        <span class="item-text">Crew Supply Oxygen</span>
-        <span class="dots"></span>
-        <span class="status">ON</span>
-    </li>
-    <li class="item">
-        <div>
-            <span class="item-text">ADIRS (1, 2, 3)</span>
-            <span class="description">Prepnúť všetky tri voliče do polohy NAV.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">NAV</span>
     </li>
 </ul>
 
