@@ -122,36 +122,62 @@
     <li class="item">
         <div>
             <span class="item-text">1. BAT 1 & 2</span>
-            <span class="description">Skontrolovať napätie (>25.5 V). Ak je nižšie, je potrebné nabíjanie (ext. napájanie). Potom prepnúť na AUTO/ON.</span>
+            <span class="description">Check voltage (>25.5V). Ak je menej, nabiť pomocou Ext Pwr. Potom nastaviť na AUTO.</span>
         </div>
         <span class="dots"></span>
-        <span class="status">CHECK / ON</span>
+        <span class="status">Check/AUTO</span>
     </li>
     <li class="item">
         <div>
-            <span class="item-text">2. EXT PWR</span>
-            <span class="description">Ak svieti zelené "AVAIL", stlačiť. Overiť, či sa rozsvietilo modré "ON" a nabehli displeje.</span>
+            <span class="item-text">2. EXT POWER</span>
+            <span class="description">Ak svieti zelené AVAIL, stlačiť na ON. Skontrolovať nabehnutie displejov.</span>
         </div>
         <span class="dots"></span>
-        <span class="status">AS RQRD</span>
+        <span class="status">ON</span>
     </li>
     <li class="item">
         <div>
-            <span class="item-text">3. RADIO / RMP 1</span>
-            <span class="description">Zapnúť RMP 1 (otočný ovládač) a nastaviť núdzovú frekvenciu 121.500 alebo podľa Ground pred štartom APU.</span>
-        </div>
-        <span class="dots"></span>
-        <span class="status">ON / SET</span>
-    </li>
-    <li class="item">
-        <div>
-            <span class="item-text">4. APU FIRE TEST</span>
-            <span class="description">Pred štartom APU vykonať test: overiť zvukový signál a svetelnú signalizáciu (APU FIRE pb, SQUIB a DISCH).</span>
+            <span class="item-text">3. APU FIRE TEST</span>
+            <span class="description">Povinný test pred spustením: Overiť zvukový signál a svetlá na Overhead/Engine paneli.</span>
         </div>
         <span class="dots"></span>
         <span class="status">PERFORM</span>
     </li>
+    <li class="item">
+        <div>
+            <span class="item-text">4. ALL IR MODE selectors</span>
+            <span class="description">Prepnúť všetky 3 ADIRS voliče do polohy NAV a skontrolovať ON BAT svetlá.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">NAV</span>
+    </li>
+
+    <li class="item">
+        <div>
+            <span class="item-text">APU MASTER pb sw</span>
+            <span class="description">ON (Počkať aspoň 3 sekundy pred stlačením START).</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">ON</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">APU START</span>
+            <span class="description">Štart APU odložiť na čas krátko pred odletom, ak nie je potrebná klimatizácia.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">ON</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">EXT PWR pb sw</span>
+            <span class="description">Ponechať zapnuté (ak je dostupné) pre zníženie záťaže APU, najmä v teple.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">AS RQRD</span>
+    </li>
 </ul>
+    
 <script>
 // Pôvodná logika výberu
 const items = Array.from(document.querySelectorAll('.item'));
