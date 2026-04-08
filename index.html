@@ -3,56 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A320 SOP Checklist</title>
+    <title>A320 Professional Checklist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: black; color: white; font-family: Arial, sans-serif; margin-bottom: 50vh; }
-        .group-title { color: red; border-bottom: 2px solid red; margin-top: 30px; }
+        body { background-color: black; color: white; font-family: 'Segoe UI', Arial, sans-serif; padding-bottom: 50vh; margin: 0; }
         
-        /* Štýl pre podskupinu - funguje ako tlačidlo */
+        /* Nadpisy skupín */
+        .group-title { color: #ff3b3b; border-bottom: 2px solid #ff3b3b; padding: 10px; text-transform: uppercase; margin-top: 30px; }
+        
+        /* Podskupiny */
         .sub-group { 
-            color: #87CEEB; /* Svetlomodrá pre podskupiny */
-            cursor: pointer; 
-            margin: 15px 0 5px 10px;
-            font-weight: bold;
-            text-decoration: underline;
+            color: #5dade2; cursor: pointer; padding: 10px; font-weight: bold; 
+            background: #1a1a1a; margin: 5px 0; border-radius: 4px;
         }
 
-        ul { list-style: none; padding-left: 0; }
-        .item { color: white; cursor: pointer; padding: 4px 10px; transition: 0.2s; }
-        .indented { margin-left: 25px; }
-        .special { font-weight: bold; color: #FFD700; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* Položka checklistu - Logika Airbus FCOM */
+        .item { 
+            display: flex; align-items: baseline; justify-content: space-between;
+            padding: 8px 15px; cursor: pointer; transition: 0.2s; border-bottom: 1px solid #222;
+        }
         
+        .item-text { text-transform: uppercase; font-weight: bold; flex-shrink: 0; }
+        .dots { flex-grow: 1; border-bottom: 2px dotted #444; margin: 0 10px; position: relative; top: -4px; }
+        .status { text-transform: uppercase; font-weight: bold; color: #FFD700; flex-shrink: 0; }
+
+        /* Rozširujúci popis pod položkou */
+        .description { 
+            display: block; font-size: 0.85em; color: #bbb; text-transform: none; font-weight: normal;
+            margin-top: 4px; font-style: italic;
+        }
+
+        /* Ikonka obrázka */
+        .img-trigger { color: #5dade2; margin-left: 10px; cursor: pointer; font-size: 1.2em; }
+
         /* Stav označené */
-        .selected { color: #555 !important; font-size: 0.95em; }
+        .selected .item-text, .selected .status { color: #555 !important; }
+        .selected .dots { border-bottom-color: #222; }
+
+        /* LIGHTBOX CSS */
+        #lightbox {
+            display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center;
+        }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 2px solid white; }
+        #lightbox.active { display: flex; }
     </style>
 </head>
 <body>
 
+<div id="lightbox" onclick="this.classList.remove('active')">
+    <img id="lightbox-img" src="" alt="Checklist Diagram">
+</div>
+
 <h3 class="group-title">Preliminary Cockpit Preparation</h3>
 
-<div class="sub-group" onclick="toggleSubGroup(this)">Krok 1: Základná bezpečnosť</div>
+<div class="sub-group" onclick="toggleSubGroup(this)">
+    SAFETY & POWER INIZIALIZATION 
+    <i class="fa-regular fa-image img-trigger" onclick="openLightbox('001.png', event)"></i>
+</div>
 <ul>
-    <li class="item indented special">Páky ovládania motorov – IDLE.</li>
-    <li class="item indented special">Hlavne spínače motorov – OFF</li>
-    <li class="item indented special">Voliče režimu motora – NORM.</li>
-    <li class="item indented special">Páka podvozku – POLOHA DOLE.</li>
+    <li class="item">
+        <div>
+            <span class="item-text">Eng Master 1 & 2</span>
+            <span class="description">Uistite sa, že sú vypnuté pred zapnutím elektriky.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">OFF</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Gear Lever</span>
+        <span class="dots"></span>
+        <span class="status">DOWN</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">Battery Voltage</span>
+            <span class="description">Check above 25.5V for APU start.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">CHECK</span>
+    </li>
 </ul>
 
-<div class="sub-group" onclick="toggleSubGroup(this)">Krok 2: Napájanie</div>
+<h3 class="group-title">After Start</h3>
+<div class="sub-group" onclick="toggleSubGroup(this)">ECAM & TRIM SETTINGS</div>
 <ul>
-    <li class="item indented special">Napätie batérie – SKONTROLOVAŤ (>25,5 V).</li>
-    <li class="item indented special">Externé napájanie – ZAPNÚŤ.</li>
-    <li class="item indented">Počkať na dokončenie autotestov.</li>
+    <li class="item">
+        <span class="item-text">Anti Ice</span>
+        <span class="dots"></span>
+        <span class="status">AS RQRD</span>
+    </li>
+    <li class="item">
+        <span class="item-text">Pitch Trim</span>
+        <span class="dots"></span>
+        <span class="status">SET %</span>
+    </li>
 </ul>
 
 <script>
+// Pôvodná logika výberu
 const items = Array.from(document.querySelectorAll('.item'));
 let selectedIndex = -1;
 
-// 1. Logika klikania po jednom (ako predtým)
 document.body.addEventListener('click', (event) => {
-    // Ignorujeme kliknutie, ak sme klikli na názov podskupiny
-    if (event.target.classList.contains('sub-group')) return;
+    if (event.target.closest('.sub-group') || event.target.closest('.img-trigger')) return;
 
     if (event.button === 0) {
         if (selectedIndex < items.length - 1) {
@@ -63,7 +119,6 @@ document.body.addEventListener('click', (event) => {
     }
 });
 
-// 2. Logika odznačovania (Pravé tlačidlo / Dlhé podržanie)
 document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault();
     if (selectedIndex >= 0) {
@@ -75,39 +130,32 @@ document.body.addEventListener('contextmenu', (event) => {
     }
 });
 
-// 3. NOVÁ LOGIKA: Označenie celej podskupiny
+// Hromadné označenie podskupiny
 function toggleSubGroup(element) {
-    // Nájdeme nasledujúci zoznam (UL) pod nadpisom
     const nextUl = element.nextElementSibling;
     if (nextUl && nextUl.tagName === 'UL') {
         const subItems = nextUl.querySelectorAll('.item');
-        
-        // Zistíme, či je prvý v skupine už označený
         const isFirstSelected = subItems[0].classList.contains('selected');
-
-        subItems.forEach(item => {
-            if (!isFirstSelected) {
-                item.classList.add('selected');
-            } else {
-                item.classList.remove('selected');
-            }
-        });
-
-        // Aktualizujeme globálny index na posledný označený prvok v celom dokumente
+        subItems.forEach(item => isFirstSelected ? item.classList.remove('selected') : item.classList.add('selected'));
         updateGlobalIndex();
     }
 }
 
 function updateGlobalIndex() {
-    // Nájdeme index posledného elementu, ktorý má triedu 'selected'
     let lastIndex = -1;
-    items.forEach((item, index) => {
-        if (item.classList.contains('selected')) {
-            lastIndex = index;
-        }
-    });
+    items.forEach((item, index) => { if (item.classList.contains('selected')) lastIndex = index; });
     selectedIndex = lastIndex;
 }
+
+// Lightbox Funkcia
+function openLightbox(imgName, event) {
+    event.stopPropagation(); // Zabráni označeniu checklistu pri kliku na fotku
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    lbImg.src = 'img/' + imgName; // Cesta k tvojim obrázkom
+    lb.classList.add('active');
+}
 </script>
+
 </body>
 </html>
