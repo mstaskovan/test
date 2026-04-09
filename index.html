@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A320 Professional SOP</title>
+    <title>320 new</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: black; color: white; font-family: 'Segoe UI', Arial, sans-serif; padding-bottom: 50vh; margin: 0; }
@@ -178,14 +178,28 @@
         <span class="status">AS RQRD</span>
     </li>
     
+    <div class="sub-group" onclick="toggleSubGroup(this)">
+    EFB / ACARS INITIALIZATION
+    </div>
+    
      <li class="item">
         <div>
             <span class="item-text">EFB</span>
-            <span class="description">Download OFP and route navigation charts onto EFB.</span>
+            <span class="description">All EFB start. Download OFP and route navigation charts onto EFB.</span>
         </div>
         <span class="dots"></span>
         <span class="status">CHECK</span>
     </li>
+
+    <li class="item">
+        <div>
+            <span class="item-text">ACARS</span>
+            <span class="description">CHECK engine & aircraft typ, database valid. INSERT FLT number & FROM/TO.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">INITIALIZE</span>
+    </li>
+    
 </ul>
 
 <script>
