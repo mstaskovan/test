@@ -182,13 +182,13 @@
     </li>
 </ul>
     <div class="sub-group" onclick="toggleSubGroup(this)">
-    EFB / ACARS INITIALIZATION
+    EFB / FMS PREINITIALIZATION
     </div>
 <ul>
      <li class="item">
         <div>
             <span class="item-text">EFB</span>
-            <span class="description">All EFB start. Download OFP and route navigation charts onto EFB.</span>
+            <span class="description">All EFB start.</span>
         </div>
         <span class="dots"></span>
         <span class="status">CHECK</span>
@@ -197,10 +197,49 @@
     <li class="item">
         <div>
             <span class="item-text">ACARS</span>
-            <span class="description">CHECK engine & aircraft typ, database valid. INSERT FLT number & FROM/TO.</span>
+            <span class="description">ATSU - AOC MENU - FLT INIT. MCDU MENU - FMGC CHECK - engine & aircraft typ, database valid. INIT pg - INIT REQUEST (fill FLT NBR).</span>
         </div>
         <span class="dots"></span>
         <span class="status">INITIALIZE</span>
+    </li>
+    
+</ul>
+    <div class="sub-group" onclick="toggleSubGroup(this)">
+    ECAM / LOGBOOK CHECK
+    </div>
+<ul>
+     <li class="item">
+        <div>
+            <span class="item-text">ECAM RCL pb</span>
+            <span class="description">This action recalls all the warnings that the flight crew cleared or cancelled during the last flight.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">PRESS 3s</span>
+    </li>
+
+    <li class="item">
+        <div>
+            <span class="item-text">LOGBOOK</span>
+            <span class="description">ATSU - AOC MENU - FLT INIT. MCDU MENU - FMGC CHECK - engine & aircraft typ, database valid. INIT pg - INIT REQUEST (fill FLT NBR).</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">CHECK</span>
+    </li>
+    <li class="item">
+        <div>
+            <span class="item-text">MEL/CDL items</span>
+            <span class="description">Minimum Equipment List / Configuration Deviation List.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">CHECK</span>
+    </li>
+        <li class="item">
+        <div>
+            <span class="item-text">RTOW</span>
+            <span class="description">Using performance software, calculate the Regulated Take Off Weight (RTWO) and compare that to the planned TOW from the OFP.</span>
+        </div>
+        <span class="dots"></span>
+        <span class="status">COMPUTE</span>
     </li>
     
 </ul>
