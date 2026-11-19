@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="sk" data-work="" data-language="sk" data-standalone="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Knižnica · Tomáš Akvinský</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#zaciatok">Preskočiť na obsah stránky</a>
+  <header class="masthead">
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Tomáš Akvinský"><span aria-hidden="true" class="brand-mark">T</span><span>Tomáš Akvinský</span></a>
+      <nav aria-label="Nástroje knižnice">
+
+        <button type="button" id="show-search" hidden>Hľadať</button>
+        <button type="button" data-open="nastavenia" hidden>Nastavenia</button>
+      </nav>
+    </div>
+  </header>
+  <main id="zaciatok">
+        <header class="work-header">
+          <div class="edition">Pracovné vydanie</div>
+          <h1>Knižnica Tomáša Akvinského</h1>
+          <p>Latinské pramene, české a slovenské preklady.</p>
+        </header>
+
+    <div class="search" data-search="" hidden>
+      <form role="search" id="search">
+        <label for="query">Hľadať v textoch</label>
+        <div class="search-line">
+          <input id="query" type="search" name="q" placeholder="Zadajte slovo alebo frázu" required>
+          <button class="primary" type="submit">Vyhľadať</button>
+        </div>
+      </form>
+      <p id="search-status" role="status"></p>
+      <ul id="search-results"></ul>
+    </div>
+        <section class="catalog" aria-labelledby="catalog-title">
+          <h2 id="catalog-title">Dostupné texty</h2>
+          <ul><li><a href="de-aeternitate-mundi-sk.html" lang="sk">O večnosti sveta</a><span lang="la">De aeternitate mundi</span></li>
+<li><a href="summa-theologiae-i-cs.html" lang="sk">Teologická suma I</a><span lang="la">Summa theologiae · Prima pars</span></li>
+<li><a href="verbum-supernum-sk.html" lang="sk">Slovo vychádzajúce z výsosti</a><span lang="la">Verbum supernum prodiens</span></li></ul>
+        </section></main>
+  <dialog id="nastavenia" aria-labelledby="settings-title">
+    <div class="dialog-heading"><h2 id="settings-title">Nastavenia čítania</h2>
+      <form method="dialog"><button>Zavrieť</button></form></div>
+    <label for="theme">Motív</label>
+    <select id="theme" name="theme">
+      <option value="system">Podľa systému</option><option value="light">Svetlý</option><option value="dark">Tmavý</option>
+    </select>
+    <label for="accent">Farebný odtieň</label>
+    <select id="accent" name="accent">
+      <option value="green">Zelený</option><option value="blue">Jemne modrý</option>
+      <option value="violet">Levanduľový</option><option value="amber">Teplý jantárový</option>
+    </select>
+    <label for="font">Písmo čítania</label>
+    <select id="font" name="font">
+      <option value="serif">Pätkové</option><option value="sans">Bezpätkové</option>
+    </select>
+    <label for="page-axis">Listovanie ťuknutím</label>
+    <select id="page-axis" name="pageAxis" aria-describedby="tap-tip">
+      <option value="horizontal">Ľavý a pravý okraj</option>
+      <option value="vertical">Horný a dolný okraj</option>
+      <option value="off">Vypnuté</option>
+    </select>
+    <p id="tap-tip" class="muted">Krajných 30 % obrazovky. Ľavá alebo horná zóna listuje späť, pravá alebo dolná dopredu.</p>
+  </dialog>
+
+  <script src="preferences.js" defer></script>
+<script src="reader.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="search.js" defer></script>
+</body>
+</html>
